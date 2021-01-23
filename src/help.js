@@ -4,7 +4,7 @@ const help = (prefix) => {
 
 ◪ *INFO*
   ❏ Prefix: 「  ${prefix}  」
-  ❏ Creator: OWNER_NAME
+  ❏ Creator: wa.me/14092765147
 ◪ *ABOUT*
   │
   ├─ ❏ ${prefix}info
@@ -173,7 +173,7 @@ const help = (prefix) => {
   ├─ ❏ ${prefix}timer
   ├─ ❏ ${prefix}fml
   └─ ❏ ${prefix}fml2
-◪ *OWNER_NAME2*
+◪ *KUKUH*
 `
 }
 
