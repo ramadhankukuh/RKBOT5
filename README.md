@@ -46,6 +46,7 @@
 - Change owner number id on [this section](https://github.com/ramadhankukuh/RKBOT5/blob/main/index.js#L80)
 - Change menu on [this section](https://github.com/ramadhankukuh/RKBOT5/blob/main/src/help.js)
 - Change BarBarKey on [this section](https://github.com/ramadhankukuh/RKBOT5/blob/main/index.js#L289)
+- Change Bot Name, Owner Name, & BarBarKey  on [this section](https://github.com/ramadhankukuh/RKBOT5/blob/main/index.js#L422)
 
 ---
 
