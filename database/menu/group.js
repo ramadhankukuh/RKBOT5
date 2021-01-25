@@ -1,10 +1,11 @@
-const group = (prefix, ownerBot, botName) => {
+const group = (prefix, botName, ownerName) => {
         return `
 「 *${botName}* 」
 
 ◪ *INFO*
   ❏ Prefix: 「  ${prefix}  」
-  ❏ Creator: ${ownerBot}
+  ❏ Creator: ${ownerName}
+  ❏ Version: 0.0.4
 ◪ *ABOUT*
   │
   ├─ ❏ ${prefix}info
@@ -30,8 +31,6 @@ const group = (prefix, ownerBot, botName) => {
   ├─ ❏ ${prefix}leave
   ├─ ❏ ${prefix}welcome
   ├─ ❏ ${prefix}nsfw
-  ├─ ❏ ${prefix}leveling
-  ├─ ❏ ${prefix}level
   ├─ ❏ ${prefix}delete
   ├─ ❏ ${prefix}simih
   └─ ❏ ${prefix}ownergroup`

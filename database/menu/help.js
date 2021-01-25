@@ -1,10 +1,16 @@
-const help = (prefix, ownerBot, botName) => {
+const help = (pushname, prefix, botName, ownerName, reqXp, uangku) => {
         return `
 「 *${botName}* 」
 
-◪ *INFO*
+◪ *USER INFO*
+  ❏ Name: ${pushname}
+  ❏ XP: ${reqXp}
+  ❏ Money: ${uangku}
+  ❏ Registered: ✔️
+◪ *BOT INFO*
   ❏ Prefix: 「  ${prefix}  」
-  ❏ Creator: ${ownerBot}
+  ❏ Creator: ${ownerName}
+  ❏ Version: 0.0.4
 ◪ *ABOUT*
   │
   ├─ ❏ ${prefix}info
@@ -33,16 +39,9 @@ const help = (prefix, ownerBot, botName) => {
   ├─ ❏ ${prefix}todmenu
   ├─ ❏ ${prefix}informationmenu
   ├─ ❏ ${prefix}stayonscreenmenu
+  ├─ ❏ ${prefix}xpmenu
+  ├─ ❏ ${prefix}limitmenu
   ├─ ❏ ${prefix}ownermenu
-  └─ ❏ ${prefix}othermenu
-◪ *OTHER*
-  │
-  ├─ ❏ ${prefix}send
-  ├─ ❏ ${prefix}wame
-  ├─ ❏ ${prefix}virtex
-  ├─ ❏ ${prefix}qrcode
-  ├─ ❏ ${prefix}timer
-  ├─ ❏ ${prefix}fml
-  └─ ❏ ${prefix}fml2`
+  └─ ❏ ${prefix}othermenu`
 }
 exports.help = help

@@ -1,10 +1,11 @@
 const downloader = (prefix, botName, ownerName) => {
 	return `
-「 *BOT_NAME* 」
+「 *${botName}* 」
 
 ◪ *INFO*
   ❏ Prefix: 「  ${prefix}  」
-  ❏ Creator: OWNER_NAME
+  ❏ Creator: ${ownerName}
+  ❏ Version: 0.0.4
 ◪ *ABOUT*
   │
   ├─ ❏ ${prefix}info
