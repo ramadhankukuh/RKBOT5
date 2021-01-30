@@ -423,7 +423,7 @@ async function starts() {
 
                         // Options
                         const botName = 'kukuhBOT'
-                        const ownerName = 'Kukuh Ramadhan'
+                        const ownerName = 'wa.me/14092765147'
                         const BarBarKey = 'YOUR_APIKEY'
 
 			const isUrl = (url) => {
