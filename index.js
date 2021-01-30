@@ -99,14 +99,14 @@ const { limit } = require('./database/menu/limit*/
 // Load Vcard Contact
 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
-            + 'FN:Nazwa🖤\n' // full name
+            + 'FN:Kukuh\n' // full name
             + 'ORG:Owner Bot;\n' // the organization of the contact
-            + 'TEL;type=CELL;type=VOICE;waid=12542123926:+1 (254) 212-3926\n' // WhatsApp ID + phone number
+            + 'TEL;type=CELL;type=VOICE;waid=14092765147:+1(409)276-5147\n' // WhatsApp ID + phone number
             + 'END:VCARD'
 prefix = '.'
 blocked = []
 limitawal = '20'
-cr = '*Verified*'
+cr = '*Verified By kukuhBOT*'
 
 // Functions
 const getLevelingXp = (userId) => {
@@ -399,7 +399,7 @@ async function starts() {
         		const bisakah = ['Bisa','Tidak Bisa']
 		        const kapankah = ['Hari Lagi','Minggu Lagi','Bulan Lagi','Tahun Lagi']
 			const botNumber = client.user.jid
-			const ownerNumber = ["12542123926@s.whatsapp.net"] // replace this with your number
+			const ownerNumber = ["14092765147@s.whatsapp.net"] // replace this with your number
 			const nomorOwner = [ownerNumber]
 			const isGroup = from.endsWith('@g.us')
 			const totalchat = await client.chats.all()
@@ -416,14 +416,14 @@ async function starts() {
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
                         const isLevelingOn = isGroup ? _leveling.includes(groupId) : false
-                        const NomerOwner = '12542123926@s.whatsapp.net'
+                        const NomerOwner = '14092765147@s.whatsapp.net'
                         const isEventon = isGroup ? event.includes(from) : false
                         const isRegister = checkRegisteredUser(sender)
                         pushname = client.contacts[sender] != undefined ? client.contacts[sender].vname || client.contacts[sender].notify : undefined
 
                         // Options
-                        const botName = 'BOT_NAME'
-                        const ownerName = 'OWNER_NAME'
+                        const botName = 'kukuhBOT'
+                        const ownerName = 'Kukuh Ramadhan'
                         const BarBarKey = 'YOUR_APIKEY'
 
 			const isUrl = (url) => {
