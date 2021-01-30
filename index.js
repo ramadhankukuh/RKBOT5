@@ -99,9 +99,9 @@ const { limit } = require('./database/menu/limit*/
 // Load Vcard Contact
 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
-            + 'FN:Kukuh\n' // full name
+            + 'FN:Nazwa🖤\n' // full name
             + 'ORG:Owner Bot;\n' // the organization of the contact
-            + 'TEL;type=CELL;type=VOICE;waid=14092765147:+1 (409) 276-5147\n' // WhatsApp ID + phone number
+            + 'TEL;type=CELL;type=VOICE;waid=12542123926:+1 (254) 212-3926\n' // WhatsApp ID + phone number
             + 'END:VCARD'
 prefix = '.'
 blocked = []
@@ -399,7 +399,7 @@ async function starts() {
         		const bisakah = ['Bisa','Tidak Bisa']
 		        const kapankah = ['Hari Lagi','Minggu Lagi','Bulan Lagi','Tahun Lagi']
 			const botNumber = client.user.jid
-			const ownerNumber = ["14092765147@s.whatsapp.net"] // replace this with your number
+			const ownerNumber = ["12542123926@s.whatsapp.net"] // replace this with your number
 			const nomorOwner = [ownerNumber]
 			const isGroup = from.endsWith('@g.us')
 			const totalchat = await client.chats.all()
@@ -416,14 +416,14 @@ async function starts() {
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
                         const isLevelingOn = isGroup ? _leveling.includes(groupId) : false
-                        const NomerOwner = '14092765147@s.whatsapp.net'
+                        const NomerOwner = '12542123926@s.whatsapp.net'
                         const isEventon = isGroup ? event.includes(from) : false
                         const isRegister = checkRegisteredUser(sender)
                         pushname = client.contacts[sender] != undefined ? client.contacts[sender].vname || client.contacts[sender].notify : undefined
 
                         // Options
-                        const botName = 'kukuhBOT'
-                        const ownerName = 'wa.me/14092765147'
+                        const botName = 'BOT_NAME'
+                        const ownerName = 'OWNER_NAME'
                         const BarBarKey = 'YOUR_APIKEY'
 
 			const isUrl = (url) => {
@@ -615,7 +615,7 @@ async function starts() {
                                         break
                                 case 'stickermakermenu':
                                 case 'stikermakermenu':
-                                        if (!isRsgister) return reply(mess.only.daftarB)
+                                        if (!isRegister) return reply(mess.only.daftarB)
                                         await costum(stickermaker(prefix, botName, ownerName), text, tescuk, cr)
                                         break
                                 case 'todmenu':
@@ -886,9 +886,9 @@ async function starts() {
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
+					anu = await fetchJson(`https://mhankbarbar.tech/api/ytv?url=${args[0]}&apiKey=${BarBarKey}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*❏ Title* : ${anu.title}\n\n*VIDEO SEDANG DIKIRIMKAN, JANGAN SPAM YA SAYANG*`
+					teks = `❏ *Title* : ${anu.title} \n❏ *Size* : ${anu.filesize} \n❏ *Desc* : ${anu.desc} \n\n*VIDEO SEDANG DIKIRIMKAN, JANGAN SPAM YA SAYANG...*`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
@@ -1093,14 +1093,20 @@ async function starts() {
 					reply(`Prefix berhasil di ubah menjadi : ${prefix}`)
 					break
 				case 'meme':
+                                        if (!isRegister) return reply(mess.only.daftarB)
+                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
 					meme = await kagApi.memes()
 					buffer = await getBuffer(`https://imgur.com/${meme.hash}.jpg`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
+                                        await limitAdd(sender)
 					break
 				case 'memeindo':
+                                        if (!isRegister) return reply(mess.only.daftarB)
+                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://imgur.com/${memein.hash}.jpg`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
+                                        await limitAdd(sender)
 					break
 				case 'block':
 					client.updatePresence(from, Presence.composing) 
@@ -1115,9 +1121,9 @@ async function starts() {
 					reply(anu.result)
 					break
 				case 'tagall':
-				client.updatePresence(from, Presence.composing) 
+				        client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
-                                        if (!isUser) return reply(mess.only.daftarB)
+                                        if (!isRegister) return reply(mess.only.daftarB)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
@@ -1996,12 +2002,14 @@ async function starts() {
                                         client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Nih kak logonya...'})
                                         await limitAdd(sender)
                                         break
-                                /*case 'jsholat':
-                                        tels = body.slice(8)
+                                case 'jsholat':
+                                        loc = body.slice(8)
+                                        if (!isRegister) return reply(mess.only.daftarB)
                                         if (args.length < 1) return reply('Daerahnya dimana kak?')
-                                        anu = await fetchJson(`https://tobz-api.herokuapp.com/api/jadwalshalat?q=${tels}&apikey=BotWeA`, {method: 'get'})
-                                        reply(anu.result)
-                                        break*/
+                                        anu = await fetchJson(`https://mhankbarbar.tech/api/jadwalshalat?daerah=${loc}&apiKey=${BarBarKey}`, {method: 'get'})
+                                        mbteks = `◪ *JAM SHALAT* \n  │\n  ├─ ❏ Daerah : ${loc} \n  ├─ ❏ Ashar : ${anu.Ashar} \n  ├─ ❏ Dhuha : ${anu.Dhuha} \n  ├─ ❏ Dzuhur : ${anu.Dzuhur} \n  ├─ ❏ Imsyak : ${anu.Imsyak} \n  ├─ ❏ Isya : ${anu.Isya} \n  ├─ ❏ Maghrib : ${anu.Maghrib} \n  └─ ❏ Subuh : ${anu.Subuh}`
+                                        client.sendMessage(from, mbteks, text)
+                                        break
                                 case 'jokerlogo':
                                         var gh = body.slice(10)
                                         var teks1 = gh.split("|")[0];
@@ -2319,18 +2327,6 @@ async function starts() {
                                         reply(anu.result)
                                         await limitAdd(sender)
                                         break
-                                /*case 'translate':
-                                        var gl = body.slice(10)
-                                        var lg = gh.split("|")[0];
-                                        var teksnya = gh.split("|")[1];
-                                        if (args.length < 1) return reply(`kode bahasanya mana kak\nContoh:\n${prefix}translate|en|aku nazwa`)
-                                        if (args.length < 2) return reply(`teksnya mana um\nContoh:\n${prefix}translate|en|aku nazwa`)
-                                        if (!isRegister) return reply(mess.only.daftarB)
-                                        reply(mess.wait)
-                                        anu = await fetchJson(`https://arugaz.my.id/api/edu/translate?lang=${lg}&text=${teksnya}`, {method: 'get'})
-                                        hasil = `*Text* : ${teksnya}\n*Translate* : ${anu.text}\n*Languange* : ${lg}\n*Did You Mean* : ${anu.didYouMean}`
-                                        client.sendMessage(from, hasil, text, {quoted: mek})
-                                        break*/
                                 case 'bal':
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         const kantong = checkATMuser(sender)
@@ -2371,7 +2367,7 @@ async function starts() {
                                         }
                                         break
                                 case 'register':
-                                        if (isRegister) return  reply(mess.only.daftarB)
+                                        if (isRegister) return  reply(`「 SUDAH REGISTER 」 \n\nKakak dah register kak...`)
                                         if (!q.includes('|')) return  reply(ind.wrongf())
                                         const namaUser = q.substring(0, q.indexOf('|') - 0)
                                         const umurUser = q.substring(q.lastIndexOf('|') + 1)
@@ -2407,7 +2403,7 @@ async function starts() {
                                         }
                                         await limitAdd(sender)
                                         break
-                                 case 'setname':
+                                 /*case 'setname':
                                         if (!isGroup) return reply(ind.groupo())
 			                if (!isGroupAdmins) return reply(ind.admin())
 			                if (!isBotGroupAdmins) return reply(ind.badmin())
@@ -2420,10 +2416,77 @@ async function starts() {
 			         	if (!isBotGroupAdmins) return reply(ind.badmin())
                                         client.groupUpdateDescription(from, `${body.slice(9)}`)
                                         client.sendMessage(from, 'Succes, Ganti Deskripsi Grup', text, {quoted: mek})
-					break
+					break*/
+                                case 'translate':
+                                        aruga = body.slice(10)
+                                        lang = aruga.split("|")[0];
+                                        teksnya = aruga.split("|")[1];
+                                        if (!isRegister) return reply(mess.only.daftarB)
+                                        if (args.length < 1) return reply(`kode bahasanya mana kak?\nContoh: ${prefix}translate en|Hai, aku Nazwa`)
+                                        if (args.length < 2) return reply(`teksnya mana kak?\nContoh: ${prefix}translate en| Hai, aku Nazwa`)
+                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                        anu = await fetchJson(`https://arugaz.my.id/api/edu/translate?lang=${lang}&text=${teksnya}`, {method: 'get'})
+                                        arteks = `◪ *TRANSLATE* \n  │\n  ├─ ❏ Text : ${teksnya} \n  ├─ ❏ Translate : ${anu.text} \n  └─ ❏ *Pronunciation* : ${anu.pronunciation}`
+                                        client.sendMessage(from, arteks, text)
+                                        await limitAdd(sender)
+                                        break
+                                case 'tafsirmimpi':
+                                        aruga = body.slice(12)
+                                        if (!isRegister) return reply(mess.only.daftarB)
+                                        if (args.length < 1) return reply(`mimpi apa kak?\nContoh: ${prefix}tafsirmimpi belanja`)
+                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                        anu = await fetchJson(`https://arugaz.my.id/api/primbon/tafsirmimpi?mimpi=${aruga}`, {method: 'get'})
+                                        reply(anu.result.hasil)
+                                        await limitAdd(sender)
+                                        break
+                                case 'tagme':
+                                        if (!isRegister) return reply(mess.only.daftarB)
+                                        var nom = mek.participant
+                                        const tagme = {
+                                                text: `@${nom.split("@s.whatsapp.net")[0]} Tuh dah ku tag!`,
+                                                contextInfo: { mentionedJid: [nom] }
+                                        }
+                                        client.sendMessage(from, tagme, text, {quoted: mek})
+                                        break
+                                case 'ip': // masih testing
+                                        ipnya = body.slice(3)
+                                        if (!isRegister) return reply(mess.only.daftarB)
+                                        if (args.length < 1) return reply(`ip nya mana kak? \nContoh: ${prefix}ip 8.8.8.8`)
+                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                        anu = await fetchJson(`https://mnazria.herokuapp.com/api/check?ip=${ipnya}`, {method: 'get'})
+                                        lang = anu.location.languages[0]
+                                        teks = `◪ *IP* \n  │\n  ├─ ❏ IP : ${anu.ip} \n  ├─ ❏ City : ${anu.city} \n  ├─ ❏ Continent Code : ${anu.continent_code} \n  ├─ ❏ Continent Name : ${anu.continent_name} \n  ├─ ❏ Country Code : ${anu.country_code} \n  ├─ ❏ Country Name : ${anu.country_name} \n  ├─ ❏ Latitude : ${anu.latitude} \n  ├─ ❏ Calling Code : ${anu.location.calling_code} \n  ├─ ❏ Capital : ${anu.location.capital} \n  ├─ ❏ Country Flag : ${anu.location.country_flag} \n  ├─ ❏ Country Flag Emoji : ${anu.location.country_flag_emoji} \n  ├─ ❏ Country Flag Emoji Unicode : ${anu.location.country_flag_emoji_unicode} \n  ├─ ❏ Geoname ID : ${anu.location.geoname_id} \n  ├─ ❏ Languages : ${lang.code} , ${lang.name} , ${lang.native} \n  ├─ ❏ Longitude : ${anu.longitude} \n  ├─ ❏ Region Code : ${anu.region_code} \n  ├─ ❏ Region Name : ${anu.region_name} \n  ├─ ❏ Type : ${anu.type} \n  └─ ❏ Zip : ${anu.zip} `
+                                        client.sendMessage(from, teks, text)
+                                        await limitAdd(sender)
+                                        break
+                                case 'happymod':
+                                        toby = body.slice(10)
+                                        if (!isRegister) return reply(mess.only.daftarB)
+                                        if (args.length < 1) return reply(`game yang mau di cari apa kak? \nContoh : ${prefix}happymod pubg`)
+                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                        anu = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${toby}&apikey=BotWeA`, {method: 'get'})
+                                        hepi = anu.result[0]
+                                        buffer = await getBuffer(hepi.image)
+                                        teks = `◪ *HAPPY MOD* \n  │\n  ├─ ❏ Title : ${hepi.title} \n  ├─ ❏ Size : ${hepi.size} \n  ├─ ❏ Version : ${hepi.version} \n  ├─ ❏ Root : ${hepi.root} \n  ├─ ❏ Purchase : ${hepi.purchase} \n  ├─ ❏ Price : ${hepi.price} \n  ├─ ❏ Link : ${hepi.link} \n  └─ ❏ Download : ${hepi.download} `
+                                        client.sendMessage(from, buffer, image, {quoted: mek, caption: teks})
+                                        await limitAdd(sender)
+                                        break
+                                case 'jadwalTV':
+                                case 'jadwaltv':
+                                case 'jadwalTv':
+                                case 'jadwaltV':
+                                        mb = body.slice(10)
+                                        if (!isRegister) return reply(mess.only.daftarB)
+                                        if (args.length < 1) return reply(`Channel TV nya apa kak? \nContoh: ${prefix}jadwalTV mnctv`)
+                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                        anu = await fetchJson(`https://mhankbarbar.tech/api/jdtv?ch=${mb}&apiKey=${BarBarKey}`, {method: 'get'})
+                                        teks = `◪ *JADWAL TV* \n  │\n  └─ ❏ Channel : ${mb} \n◪ *JADWAL* \n${anu.result} `
+                                        client.sendMessage(from, teks, text)
+                                        await limitAdd(sender)
+                                        break
 			        case 'wait':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
-                                        if (!isUser) return reply(mess.only.daftarB)
+                                        if (!isRegister) return reply(mess.only.daftarB)
 						reply(mess.wait)
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						media = await client.downloadMediaMessage(encmedia)
