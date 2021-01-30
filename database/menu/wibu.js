@@ -1,28 +1,59 @@
 const wibu = (prefix, botName, ownerName) => {
         return `
-「 *${botName}* 」
-
-◪ *INFO*
-  ❏ Prefix: 「  ${prefix}  」
-  ❏ Creator: ${ownerName}
-  ❏ Version: 0.0.4
-◪ *ABOUT*
-  │
-  ├─ ❏ ${prefix}info
-  ├─ ❏ ${prefix}blocklist
-  ├─ ❏ ${prefix}chatlist
-  ├─ ❏ ${prefix}ping
-  └─ ❏ ${prefix}bugreport
-◪ *WIBU*
-  │
-  ├─ ❏ ${prefix}neonime
-  ├─ ❏ ${prefix}pokemon
-  ├─ ❏ ${prefix}loli
-  ├─ ❏ ${prefix}waifu
-  ├─ ❏ ${prefix}randomanime
-  ├─ ❏ ${prefix}husbu
-  ├─ ❏ ${prefix}husbu2
-  ├─ ❏ ${prefix}wait
-  └─ ❏ ${prefix}nekonime`
+┏ *〈 ${botName} 〉*
+╿
+┷┯ *〈 BOT INFO 〉*
+   ╽
+   ┠≽ *Prefix* : 「  ${prefix}  」
+   ┠≽ *Creator* : ${ownerName}
+   ┠≽ *Version* : 0.0.4
+   ╿
+┯┷ *〈 ABOUT 〉*
+╽
+┠≽ *${prefix}info* (error)
+┃ *Desc* : Show Bot Details
+┠──────────────╼
+┠≽ *${prefix}blocklist*
+┃ *Desc* : Show Blocked User
+┠──────────────╼
+┠≽ *${prefix}chatlist* (error)
+┃ *Desc* : Show All Chat User
+┠──────────────╼
+┠≽ *${prefix}ping*
+┃ *Desc* : Show Connection Bot Speed
+┠──────────────╼
+┠≽ *${prefix}bugreport* <text>
+┃ *Desc* : Report Bug To Owner Bot
+╿
+┷┯ *〈 WEEBOO 〉*
+   ╽
+   ┠≽ *${prefix}neonime*
+   ┃ *Desc* : Search Neonime
+   ┠──────────────╼
+   ┠≽ *${prefix}pokemon*
+   ┃ *Desc* : Random Pokemon Image
+   ┠──────────────╼
+   ┠≽ *${prefix}loli*
+   ┃ *Desc* : Random Loli Image
+   ┠──────────────╼
+   ┠≽ *${prefix}waifu*
+   ┃ *Desc* : Random Waifu Image
+   ┠──────────────╼
+   ┠≽ *${prefix}randomanime*
+   ┃ *Desc* : Random Anime Image
+   ┠──────────────╼
+   ┠≽ *${prefix}husbu*
+   ┃ *Desc* : Random Husbu Image
+   ┠──────────────╼
+   ┠≽ *${prefix}husbu2*
+   ┃ *Desc* : Random Husbu2 Image
+   ┠──────────────╼
+   ┠≽ *${prefix}wait*
+   ┃ *Desc* : Send Anime Name & Short Scene
+   ┠──────────────╼
+   ┠≽ *${prefix}nekonime*
+   ┃ *Desc* : Random Nekonime Image
+   ╿ *${ownerName}*,
+   ╰╼≽ *Developer © ${botName}`
 }
 exports.wibu = wibu
