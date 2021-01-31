@@ -101,7 +101,7 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
             + 'FN:Kukuh\n' // full name
             + 'ORG:Owner Bot;\n' // the organization of the contact
-            + 'TEL;type=CELL;type=VOICE;waid=14092765147:+1(409)276-5147\n' // WhatsApp ID + phone number
+            + 'TEL;type=CELL;type=VOICE;waid=14092765147:+1 (409) 276-5147\n' // WhatsApp ID + phone number
             + 'END:VCARD'
 prefix = '.'
 blocked = []
