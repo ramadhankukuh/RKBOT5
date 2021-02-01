@@ -6,7 +6,7 @@ const logomaker = (prefix, botName, ownerName) => {
    ╽
    ┠≽ *Prefix* : 「  ${prefix}  」
    ┠≽ *Creator* : ${ownerName}
-   ┠≽ *Version* : 0.0.4
+   ┠≽ *Version* : 0.0.5
    ╿
 ┯┷ *〈 ABOUT 〉*
 ╽
